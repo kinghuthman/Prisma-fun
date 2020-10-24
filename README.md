@@ -49,3 +49,13 @@ Install npm dependencies:
 ```
 npm install
 ```
+
+
+
+### Understanding the Prisma Schema
+
+- Prisma Schema is a declarative configuration for database tables
+  - used as the source of truth for the generated prisma client and prisma migrate to create the db schema
+- Prisma Migrate helps create the tables or adds columns to existing tables
+- every model maps to a database table
+- json data type allows for free form json, useful for inconsistent info across certain tables/columns
