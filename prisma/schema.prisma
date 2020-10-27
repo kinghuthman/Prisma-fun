@@ -9,19 +9,57 @@ datasource db {
 }
 
 model User {
+  id               Int                @id @default(autoincrement())
+  email            String             @unique
+  updatedAt        DateTime           @updatedAt
+  createdAt        DateTime           @default(now())
+  firstName        String
+  lastName         String
+  social           Json
+  // implicit many to many
+  courses          Course[]
+  CourseEnrollment CourseEnrollment[]
 }
 
-model Token {
-}
+// model Token {
+// }
 
 model Course {
+  id               Int                @id @default(autoincrement())
+  name             String
+  courseDetails    String
+  // can have both student and teachers, implicit many to many
+  members          User[]
+  CourseEnrollment CourseEnrollment[]
 }
 
 model CourseEnrollment {
+  createdAt DateTime @default(now())
+  role      UserRole
+
+  // explicit many to many
+  userId   Int
+  user     User   @relation(fields: [userId], references: [id])
+  courseId Int
+  course   Course @relation(fields: [courseId], references: [id])
+  // allows to write primary keys, this pk allows for 
+  @@id([userId, courseId, role])
+}
+
+enum UserRole {
+  STUDENT
+  TEACHER
 }
 
 model Test {
+  id        Int      @id @default(autoincrement())
+  updatedAt DateTime @updatedAt
+  name      String
+  date      DateTime
 }
 
 model TestResult {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  result    Int // percentage precise to one decimal point `result * 10^-1`
 }

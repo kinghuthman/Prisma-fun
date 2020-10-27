@@ -59,3 +59,21 @@ npm install
 - Prisma Migrate helps create the tables or adds columns to existing tables
 - every model maps to a database table
 - json data type allows for free form json, useful for inconsistent info across certain tables/columns
+
+### Coding (Random)
+
+- @unique constraint will also add the index
+- using the 'Json' data-type, very flexible, can add fields without having to do db migration
+
+
+### Many to Many
+
+- implicit many to many
+  - simply add the model as a datatype to another model's field
+- explicit many to many
+  - when defining a field, the datatype will be another model and we can choose what fields we need
+
+
+### Primary Key
+
+- combination has to be unique 
