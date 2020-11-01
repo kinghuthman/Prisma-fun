@@ -39,8 +39,16 @@ The database schema will be created by Prisma Migrate.
   - Node.js
   - Prisma
   - TypeScript
+    - hapi
+    - joi
+    - jest
   - Jest
   - Hapi.js
+    - boom
+      - http errors
+    - joi
+      - validation
+    - 
 
 ## How to use
 
@@ -51,6 +59,21 @@ npm install
 ```
 
 
+## Migrate
+
+- First, set the DATABASE_URL environment variable locally so that Prisma can connect to your database
+  - export DATABASE_URL=""
+- Save Migration
+  - npm install -g @prisma/cli --save-dev
+  - npx prisma migrate save --experimental --name "init-db" --create-db
+- Run Migration
+  - npx prisma migrate up --experimental
+- Generate prisma client
+  - add generator code to schema
+- Install prisma/client 
+  - npm install --save @prisma/client
+- Generate Prisma Client with the following command:
+  - npx prisma generate
 
 ### Understanding the Prisma Schema
 
@@ -79,3 +102,8 @@ npm install
 - combination has to be unique
 
 
+## Routes
+
+### Hapi 
+
+- node js framework
